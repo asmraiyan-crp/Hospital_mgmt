@@ -3,6 +3,7 @@ from django.db import models
 class Hospital(models.Model):
     name = models.CharField(max_length = 255)
     location = models.CharField(max_length = 255)
+    critical_priority_avaiable_beds = models.IntegerField()
     top_priority_avaiable_beds = models.IntegerField()
     mid_priority_avaiable_beds = models.IntegerField()
     low_priority_avaiable_beds = models.IntegerField()
