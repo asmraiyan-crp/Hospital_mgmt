@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Hospital, Patient, Doctor, Resource
+from allocation.utils import run_allocation
 
 @admin.register(Hospital)
 class HospitalAdmin(admin.ModelAdmin):
@@ -12,10 +13,18 @@ class PatientAdmin(admin.ModelAdmin):
     list_display = ('name', 'age', 'address', 'email', 'emargency_contact', 'get_priority_level', 'hospital_name')
     list_filter = ('priority_level', 'hospital_name')
     search_fields = ('name', 'email', 'address')
+    actions = ['run_auto_allocation'] 
+
+    def run_auto_allocation(self, request, queryset):
+        run_allocation()  # Call your allocation logic
+        self.message_user(request, "✅ Allocation complete.")
+
+    run_auto_allocation.short_description = "Run Auto-Allocation" 
 
     def get_priority_level(self, obj):
         return obj.get_priority_level_display()
     get_priority_level.short_description = 'Priority Level'
+
 
 @admin.register(Doctor)
 class DoctorAdmin(admin.ModelAdmin):
