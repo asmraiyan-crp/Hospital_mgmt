@@ -37,3 +37,19 @@ class ResourceAdmin(admin.ModelAdmin):
     list_display = ('name', 'quantity', 'priority_score')
     search_fields = ('name',)
     list_filter = ('priority_score',)
+    actions = ['run_optimize'] 
+
+    def run_optimize(self, request, queryset):
+        max_capacity = 50  # You can adjust this or make it dynamic
+        from allocation.knapsack import run_knapsack # import your knapsack function
+        max_capacity = sum(resource.quantity for resource in queryset)
+        selected, total_value = run_knapsack(max_capacity)
+        
+        # Optionally, display the selected items in the Django admin message
+        selected_names = ", ".join([item.name for item in selected])
+        self.message_user(
+            request,
+            f"✅ Optimization complete. Total utility: {total_value}. Selected: {selected_names}"
+        )
+
+    run_optimize.short_description = "Run Resource Optimization (Knapsack)"
