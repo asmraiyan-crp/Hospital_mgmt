@@ -1,6 +1,6 @@
 from django.contrib import admin , messages
-from .models import Hospital, Patient, Doctor, Resource, HospitalTransfer, Supply_center, Disaster_zone, TransportFlow
-from allocation.utils import run_allocation, run_transport_allocation
+from .models import Hospital, Patient, Doctor, Resource, HospitalTransfer, Supply_center, Disaster_zone, TransportFlow , supply_max_cap
+from allocation.utils import run_allocation, run_transport_allocation, run_supply_optimization
 
 
 @admin.register(Hospital)
@@ -38,18 +38,19 @@ class DoctorAdmin(admin.ModelAdmin):
     list_filter = ('avaiable', 'spaciality')
     search_fields = ('name', 'spaciality')
 
+@admin.register(supply_max_cap)
+class Supply_max_capAdmin(admin.ModelAdmin):
+    list_dispaly =('max_capacity')
+
 @admin.register(Resource)
 class ResourceAdmin(admin.ModelAdmin):
-    list_display = ('name', 'quantity', 'priority_score')
+    list_display = ('name', 'volume', 'priority_score')
     search_fields = ('name',)
     list_filter = ('priority_score',)
     actions = ['run_optimize'] 
 
     def run_optimize(self, request, queryset):
-        max_capacity = 50  # You can adjust this or make it dynamic
-        from allocation.knapsack import run_knapsack # import your knapsack function
-        max_capacity = sum(resource.quantity for resource in queryset)
-        selected, total_value = run_knapsack(max_capacity)
+        selected, total_value = run_supply_optimization()
         
         # Optionally, display the selected items in the Django admin message
         selected_names = ", ".join([item.name for item in selected])
@@ -70,22 +71,21 @@ class Disaster_zone_Admin(admin.ModelAdmin):
     list_display = ('name','demand')
     search_fields = ('name',)
 
-
-@admin.action(description="🚚 Allocate Transport")
-def allocate_selected_transport(modeladmin, request, queryset):
-    """
-    Admin action to allocate transport for selected TransportFlow objects
-    """
-    try:
-        # Here you can call your existing logic
-        run_transport_allocation()  # run allocation for all transport
-        messages.success(request, "✅ Transport allocation executed successfully!")
-    except Exception as e:
-        messages.error(request, f"❌ Error during allocation: {e}")
-
 @admin.register(TransportFlow)
 class TransportFlowAdmin(admin.ModelAdmin):
-    list_display = ("center", "zone", "amount_sent")
-    actions = [allocate_selected_transport]
+    list_display = ("center", "zone", "amount_sent","send_limits")
+    actions = ["allocate_selected_transport"]
+
+    def allocate_selected_transport(modeladmin, request, queryset):
+        """
+        Admin action to allocate transport for selected TransportFlow objects
+        """
+        try:
+            # Here you can call your existing logic
+            run_transport_allocation()  # run allocation for all transport
+            messages.success(request, "✅ Transport allocation executed successfully!")
+        except Exception as e:
+            messages.error(request, f"❌ Error during allocation: {e}")
+
 
 

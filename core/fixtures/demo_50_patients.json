@@ -937,7 +937,8 @@
     "fields": {
       "center": 1,
       "zone": 1,
-      "amount_sent": 25
+      "send_limits": 20,
+      "amount_sent": 0
     }
   },
   {
@@ -946,7 +947,8 @@
     "fields": {
       "center": 1,
       "zone": 3,
-      "amount_sent": 20
+      "send_limits": 10,
+      "amount_sent": 0
     }
   },
   {
@@ -955,7 +957,8 @@
     "fields": {
       "center": 2,
       "zone": 2,
-      "amount_sent": 30
+      "send_limits": 20,
+      "amount_sent": 0
     }
   },
   {
@@ -964,7 +967,8 @@
     "fields": {
       "center": 3,
       "zone": 3,
-      "amount_sent": 15
+      "send_limits": 40,
+      "amount_sent": 0
     }
   },
   {
@@ -973,7 +977,8 @@
     "fields": {
       "center": 4,
       "zone": 4,
-      "amount_sent": 10
+      "send_limits": 20,
+      "amount_sent": 0
     }
   },
   {
@@ -982,7 +987,8 @@
     "fields": {
       "center": 5,
       "zone": 5,
-      "amount_sent": 20
+      "send_limits": 25,
+      "amount_sent": 0
     }
   },
   {
@@ -991,7 +997,8 @@
     "fields": {
       "center": 6,
       "zone": 6,
-      "amount_sent": 40
+      "send_limits": 15,
+      "amount_sent": 0
     }
   },
   {
@@ -1000,7 +1007,8 @@
     "fields": {
       "center": 2,
       "zone": 1,
-      "amount_sent": 10
+      "send_limits": 30,
+      "amount_sent": 0
     }
   },
   {
@@ -1009,7 +1017,8 @@
     "fields": {
       "center": 3,
       "zone": 5,
-      "amount_sent": 5
+      "send_limits": 15,
+      "amount_sent": 0
     }
   },
   {
@@ -1018,7 +1027,8 @@
     "fields": {
       "center": 5,
       "zone": 6,
-      "amount_sent": 10
+      "send_limits": 10,
+      "amount_sent": 0
     }
   },
   {

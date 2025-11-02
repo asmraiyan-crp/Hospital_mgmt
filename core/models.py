@@ -1,3 +1,5 @@
+from email.policy import default
+
 from django.db import models
 
 class Hospital(models.Model):
@@ -55,7 +57,7 @@ class Doctor(models.Model):
     
 class Resource(models.Model):
     name = models.CharField(max_length=100)
-    quantity = models.IntegerField()
+    volume = models.IntegerField()
     priority_score = models.IntegerField()
     
     def __str__(self):
@@ -76,7 +78,14 @@ class Disaster_zone(models.Model):
 class TransportFlow(models.Model):
     center = models.ForeignKey(Supply_center, on_delete=models.CASCADE)
     zone = models.ForeignKey(Disaster_zone, on_delete=models.CASCADE)
+    send_limits = models.IntegerField()
     amount_sent = models.IntegerField()
 
     def __str__(self):
         return f"{self.center.name} → {self.zone.name}: {self.amount_sent} units"
+
+class supply_max_cap(models.Model):
+    max_capacity = models.IntegerField(default = 100)
+
+    def __str__(self):
+        return f"max_capacity : {self.max_capacity}"
