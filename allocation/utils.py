@@ -1,5 +1,5 @@
 from .maxflow import maxflow
-from core.models import Hospital, Patient
+from core.models import Hospital, Patient, HospitalTransfer,Resource,Supply_center,Disaster_zone,TransportFlow
 from django.db import transaction
 from .knapsack import run_knapsack
 
@@ -10,6 +10,7 @@ def run_allocation():
 
     patients = list(Patient.objects.filter(hospital_name__isnull=True))
     hospitals = list(Hospital.objects.all())
+    hospital_t = list(HospitalTransfer.objects.all())
 
     priority_map = {1: "critical", 2: "top", 3: "mid", 4: "low"}
 
@@ -26,6 +27,11 @@ def run_allocation():
                 hospital_node = f"H{h.id}-{bed_type}"
                 mf.add_edge(patient_node, hospital_node, 1)
 
+    for t in hospital_t:
+        hospital_A_node = f"H{t.from_hospital.id}"
+        hospital_B_node = f"H{t.to_hospital.id}"
+        mf.add_edge(hospital_A_node,hospital_B_node,t.capacity)
+
     for h in hospitals:
         for bed_type in ["critical", "top", "mid", "low"]:
             bed_count = getattr(h, f"{bed_type}_priority_avaiable_beds")
@@ -41,7 +47,7 @@ def run_allocation():
     updated_patients = []
     hospital_bed_updates = {}
 
-    for u, v in assignments:
+    for u, v ,f in assignments:
         if u.startswith("P") and v.startswith("H"):
             try:
                 patient_id = int(u[1:])
@@ -80,6 +86,67 @@ def run_allocation():
                 h.save()
 
     print("Allocation complete")
+
+def run_transport_allocation():
+    mf = maxflow()
+    source = "S"
+    sink = "T"
+
+    center_list = list(Supply_center.objects.all())
+    destination_list = list(Disaster_zone.objects.all())
+
+    # Source -> centers
+    for c in center_list:
+        mf.add_edge(source, f"S{c.id}", c.total_stock)
+
+    # Center -> Zone
+    for t in TransportFlow.objects.all():
+        mf.add_edge(f"S{t.center.id}", f"Z{t.zone.id}", t.amount_sent)
+
+    # Zone -> Sink
+    for z in destination_list:
+        mf.add_edge(f"Z{z.id}", sink, z.demand)
+
+    # Run maxflow
+    total_flow = mf.mflow(source, sink)
+    print("Total supplies transported:", total_flow)
+
+    # Prepare dicts for updating stocks and demands
+    center_updates = {c.id: c.total_stock for c in center_list}
+    destination_updates = {z.id: z.demand for z in destination_list}
+
+    assignments = mf.get_flow()  # returns [(u, v, flow), ...]
+
+    # Print allocation and update dicts
+    for u, v, flow in assignments:
+        if u.startswith("S") and v.startswith("Z") and flow > 0:
+            center_id = int(u[1:])
+            zone_id = int(v[1:])
+            center_updates[center_id] -= flow
+            destination_updates[zone_id] -= flow
+            print(f"Center {center_id} sent {flow} units → Zone {zone_id}")
+
+    # Save updates in DB
+    with transaction.atomic():
+        for c in center_list:
+            c.total_stock = center_updates[c.id]
+            c.save()
+
+        for z in destination_list:
+            z.demand = destination_updates[z.id]
+            z.save()
+
+        # Save allocation for admin panel
+        TransportFlow.objects.all().delete()  # optional: clear old data
+        for u, v, flow in assignments:
+            if u.startswith("S") and v.startswith("Z") and flow > 0:
+                center_id = int(u[1:])
+                zone_id = int(v[1:])
+                center = next(c for c in center_list if c.id == center_id)
+                zone = next(z for z in destination_list if z.id == zone_id)
+                TransportFlow.objects.create(center=center, zone=zone, amount_sent=flow)
+
+    print("\n✅ Transport allocation completed successfully!\n")
 
 
 def run_supply_optimization(max_capacity=50):

@@ -1,0 +1,1240 @@
+[
+  {
+    "model": "core.hospital",
+    "pk": 1,
+    "fields": {
+      "name": "ALOK-Mirpur-10",
+      "location": "Mirpur-10",
+      "critical_priority_avaiable_beds": 5,
+      "top_priority_avaiable_beds": 10,
+      "mid_priority_avaiable_beds": 25,
+      "low_priority_avaiable_beds": 60,
+      "total_beds": 100
+    }
+  },
+  {
+    "model": "core.hospital",
+    "pk": 2,
+    "fields": {
+      "name": "Mirpur Popular",
+      "location": "Mirpur-11",
+      "critical_priority_avaiable_beds": 10,
+      "top_priority_avaiable_beds": 15,
+      "mid_priority_avaiable_beds": 40,
+      "low_priority_avaiable_beds": 100,
+      "total_beds": 165
+    }
+  },
+  {
+    "model": "core.hospital",
+    "pk": 3,
+    "fields": {
+      "name": "Ibn Sina Hospital",
+      "location": "Dhanmondi",
+      "critical_priority_avaiable_beds": 15,
+      "top_priority_avaiable_beds": 20,
+      "mid_priority_avaiable_beds": 50,
+      "low_priority_avaiable_beds": 150,
+      "total_beds": 235
+    }
+  },
+  {
+    "model": "core.hospital",
+    "pk": 4,
+    "fields": {
+      "name": "LabAid Hospital",
+      "location": "Dhanmondi",
+      "critical_priority_avaiable_beds": 20,
+      "top_priority_avaiable_beds": 30,
+      "mid_priority_avaiable_beds": 70,
+      "low_priority_avaiable_beds": 180,
+      "total_beds": 300
+    }
+  },
+  {
+    "model": "core.hospital",
+    "pk": 5,
+    "fields": {
+      "name": "United Hospital",
+      "location": "Gulshan",
+      "critical_priority_avaiable_beds": 30,
+      "top_priority_avaiable_beds": 50,
+      "mid_priority_avaiable_beds": 100,
+      "low_priority_avaiable_beds": 250,
+      "total_beds": 430
+    }
+  },
+    {
+    "model": "core.HospitalTransfer",
+    "pk": 1,
+    "fields": {
+      "from_hospital": 1,
+      "to_hospital": 2,
+      "capacity": 5
+    }
+  },
+  {
+    "model": "core.HospitalTransfer",
+    "pk": 2,
+    "fields": {
+      "from_hospital": 2,
+      "to_hospital": 1,
+      "capacity": 4
+    }
+  },
+  {
+    "model": "core.HospitalTransfer",
+    "pk": 3,
+    "fields": {
+      "from_hospital": 1,
+      "to_hospital": 3,
+      "capacity": 3
+    }
+  },
+  {
+    "model": "core.HospitalTransfer",
+    "pk": 4,
+    "fields": {
+      "from_hospital": 3,
+      "to_hospital": 1,
+      "capacity": 3
+    }
+  },
+  {
+    "model": "core.HospitalTransfer",
+    "pk": 5,
+    "fields": {
+      "from_hospital": 2,
+      "to_hospital": 4,
+      "capacity": 4
+    }
+  },
+  {
+    "model": "core.HospitalTransfer",
+    "pk": 6,
+    "fields": {
+      "from_hospital": 4,
+      "to_hospital": 2,
+      "capacity": 3
+    }
+  },
+  {
+    "model": "core.HospitalTransfer",
+    "pk": 7,
+    "fields": {
+      "from_hospital": 3,
+      "to_hospital": 5,
+      "capacity": 6
+    }
+  },
+  {
+    "model": "core.HospitalTransfer",
+    "pk": 8,
+    "fields": {
+      "from_hospital": 5,
+      "to_hospital": 3,
+      "capacity": 5
+    }
+  },
+  {
+    "model": "core.HospitalTransfer",
+    "pk": 9,
+    "fields": {
+      "from_hospital": 4,
+      "to_hospital": 6,
+      "capacity": 4
+    }
+  },
+  {
+    "model": "core.HospitalTransfer",
+    "pk": 10,
+    "fields": {
+      "from_hospital": 6,
+      "to_hospital": 4,
+      "capacity": 4
+    }
+  },
+  {
+    "model": "core.HospitalTransfer",
+    "pk": 11,
+    "fields": {
+      "from_hospital": 5,
+      "to_hospital": 6,
+      "capacity": 7
+    }
+  },
+  {
+    "model": "core.HospitalTransfer",
+    "pk": 12,
+    "fields": {
+      "from_hospital": 6,
+      "to_hospital": 5,
+      "capacity": 6
+    }
+  },
+  {
+    "model": "core.hospital",
+    "pk": 6,
+    "fields": {
+      "name": "Dhaka Medical College",
+      "location": "Shahbagh",
+      "critical_priority_avaiable_beds": 40,
+      "top_priority_avaiable_beds": 60,
+      "mid_priority_avaiable_beds": 120,
+      "low_priority_avaiable_beds": 300,
+      "total_beds": 520
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 1,
+    "fields": {
+      "name": "Shanto",
+      "age": 32,
+      "address": "Area 5",
+      "email": "user1@example.com",
+      "emergency_contact": "01736473514",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 2,
+    "fields": {
+      "name": "Tania",
+      "age": 38,
+      "address": "Area 3",
+      "email": "user2@example.com",
+      "emergency_contact": "01767180710",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 3,
+    "fields": {
+      "name": "Nayeem",
+      "age": 18,
+      "address": "Area 13",
+      "email": "user3@example.com",
+      "emergency_contact": "01762589267",
+      "priority_level": 3,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 4,
+    "fields": {
+      "name": "Samia",
+      "age": 58,
+      "address": "Area 9",
+      "email": "user4@example.com",
+      "emergency_contact": "01748649647",
+      "priority_level": 4,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 5,
+    "fields": {
+      "name": "Rana",
+      "age": 42,
+      "address": "Area 13",
+      "email": "user5@example.com",
+      "emergency_contact": "01734291896",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 6,
+    "fields": {
+      "name": "Nabil",
+      "age": 52,
+      "address": "Area 17",
+      "email": "user6@example.com",
+      "emergency_contact": "01751234580",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 7,
+    "fields": {
+      "name": "Sabbir",
+      "age": 25,
+      "address": "Area 19",
+      "email": "user7@example.com",
+      "emergency_contact": "01751895651",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 8,
+    "fields": {
+      "name": "Labiba",
+      "age": 42,
+      "address": "Area 1",
+      "email": "user8@example.com",
+      "emergency_contact": "01753404274",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 9,
+    "fields": {
+      "name": "Nabila",
+      "age": 58,
+      "address": "Area 17",
+      "email": "user9@example.com",
+      "emergency_contact": "01770980086",
+      "priority_level": 3,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 10,
+    "fields": {
+      "name": "Shahriar",
+      "age": 55,
+      "address": "Area 16",
+      "email": "user10@example.com",
+      "emergency_contact": "01750677200",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 11,
+    "fields": {
+      "name": "Labiba",
+      "age": 37,
+      "address": "Area 9",
+      "email": "user11@example.com",
+      "emergency_contact": "01749819961",
+      "priority_level": 3,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 12,
+    "fields": {
+      "name": "Shahad",
+      "age": 27,
+      "address": "Area 13",
+      "email": "user12@example.com",
+      "emergency_contact": "01738574303",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 13,
+    "fields": {
+      "name": "Mina",
+      "age": 35,
+      "address": "Area 5",
+      "email": "user13@example.com",
+      "emergency_contact": "01781240274",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 14,
+    "fields": {
+      "name": "Sadia",
+      "age": 51,
+      "address": "Area 6",
+      "email": "user14@example.com",
+      "emergency_contact": "01793407487",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 15,
+    "fields": {
+      "name": "Sadia",
+      "age": 19,
+      "address": "Area 15",
+      "email": "user15@example.com",
+      "emergency_contact": "01793156545",
+      "priority_level": 3,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 16,
+    "fields": {
+      "name": "Rana",
+      "age": 52,
+      "address": "Area 15",
+      "email": "user16@example.com",
+      "emergency_contact": "01796905825",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 17,
+    "fields": {
+      "name": "Labiba",
+      "age": 49,
+      "address": "Area 11",
+      "email": "user17@example.com",
+      "emergency_contact": "01757105796",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 18,
+    "fields": {
+      "name": "Shahad",
+      "age": 37,
+      "address": "Area 3",
+      "email": "user18@example.com",
+      "emergency_contact": "01786614487",
+      "priority_level": 4,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 19,
+    "fields": {
+      "name": "Fahim",
+      "age": 51,
+      "address": "Area 13",
+      "email": "user19@example.com",
+      "emergency_contact": "01783560792",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 20,
+    "fields": {
+      "name": "Mehedi",
+      "age": 31,
+      "address": "Area 7",
+      "email": "user20@example.com",
+      "emergency_contact": "01730910955",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 21,
+    "fields": {
+      "name": "Tarek",
+      "age": 57,
+      "address": "Area 18",
+      "email": "user21@example.com",
+      "emergency_contact": "01785282025",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 22,
+    "fields": {
+      "name": "Rifat",
+      "age": 46,
+      "address": "Area 14",
+      "email": "user22@example.com",
+      "emergency_contact": "01726731913",
+      "priority_level": 3,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 23,
+    "fields": {
+      "name": "Nashit",
+      "age": 18,
+      "address": "Area 3",
+      "email": "user23@example.com",
+      "emergency_contact": "01749233158",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 24,
+    "fields": {
+      "name": "Rasheda",
+      "age": 23,
+      "address": "Area 5",
+      "email": "user24@example.com",
+      "emergency_contact": "01799844962",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 25,
+    "fields": {
+      "name": "Ayesha",
+      "age": 30,
+      "address": "Area 5",
+      "email": "user25@example.com",
+      "emergency_contact": "01793755508",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 26,
+    "fields": {
+      "name": "Salma",
+      "age": 26,
+      "address": "Area 6",
+      "email": "user26@example.com",
+      "emergency_contact": "01761744839",
+      "priority_level": 3,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 27,
+    "fields": {
+      "name": "Tazeen",
+      "age": 42,
+      "address": "Area 11",
+      "email": "user27@example.com",
+      "emergency_contact": "01724847470",
+      "priority_level": 4,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 28,
+    "fields": {
+      "name": "Farhana",
+      "age": 51,
+      "address": "Area 10",
+      "email": "user28@example.com",
+      "emergency_contact": "01757478172",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 29,
+    "fields": {
+      "name": "Rifat",
+      "age": 37,
+      "address": "Area 16",
+      "email": "user29@example.com",
+      "emergency_contact": "01740442164",
+      "priority_level": 4,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 30,
+    "fields": {
+      "name": "Ayesha",
+      "age": 59,
+      "address": "Area 17",
+      "email": "user30@example.com",
+      "emergency_contact": "01764179008",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 31,
+    "fields": {
+      "name": "Sara",
+      "age": 29,
+      "address": "Area 3",
+      "email": "user31@example.com",
+      "emergency_contact": "01731346103",
+      "priority_level": 4,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 32,
+    "fields": {
+      "name": "Sumi",
+      "age": 49,
+      "address": "Area 6",
+      "email": "user32@example.com",
+      "emergency_contact": "01741914716",
+      "priority_level": 4,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 33,
+    "fields": {
+      "name": "Shanto",
+      "age": 40,
+      "address": "Area 15",
+      "email": "user33@example.com",
+      "emergency_contact": "01786236879",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 34,
+    "fields": {
+      "name": "Mehedi",
+      "age": 58,
+      "address": "Area 8",
+      "email": "user34@example.com",
+      "emergency_contact": "01796269641",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 35,
+    "fields": {
+      "name": "Rashed",
+      "age": 54,
+      "address": "Area 20",
+      "email": "user35@example.com",
+      "emergency_contact": "01762218294",
+      "priority_level": 3,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 36,
+    "fields": {
+      "name": "Arian",
+      "age": 59,
+      "address": "Area 15",
+      "email": "user36@example.com",
+      "emergency_contact": "01783750060",
+      "priority_level": 4,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 37,
+    "fields": {
+      "name": "Rasheda",
+      "age": 35,
+      "address": "Area 18",
+      "email": "user37@example.com",
+      "emergency_contact": "01760634655",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 38,
+    "fields": {
+      "name": "Nabil",
+      "age": 24,
+      "address": "Area 13",
+      "email": "user38@example.com",
+      "emergency_contact": "01763929870",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 39,
+    "fields": {
+      "name": "Labiba",
+      "age": 59,
+      "address": "Area 11",
+      "email": "user39@example.com",
+      "emergency_contact": "01722259023",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 40,
+    "fields": {
+      "name": "Shamim",
+      "age": 39,
+      "address": "Area 10",
+      "email": "user40@example.com",
+      "emergency_contact": "01795578567",
+      "priority_level": 4,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 41,
+    "fields": {
+      "name": "Rana",
+      "age": 39,
+      "address": "Area 18",
+      "email": "user41@example.com",
+      "emergency_contact": "01764925741",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 42,
+    "fields": {
+      "name": "Rana",
+      "age": 59,
+      "address": "Area 8",
+      "email": "user42@example.com",
+      "emergency_contact": "01766289342",
+      "priority_level": 3,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 43,
+    "fields": {
+      "name": "Rana",
+      "age": 43,
+      "address": "Area 1",
+      "email": "user43@example.com",
+      "emergency_contact": "01733991427",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 44,
+    "fields": {
+      "name": "Rumana",
+      "age": 28,
+      "address": "Area 14",
+      "email": "user44@example.com",
+      "emergency_contact": "01732553499",
+      "priority_level": 3,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 45,
+    "fields": {
+      "name": "Ratul",
+      "age": 41,
+      "address": "Area 20",
+      "email": "user45@example.com",
+      "emergency_contact": "01794463314",
+      "priority_level": 1,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 46,
+    "fields": {
+      "name": "Farhana",
+      "age": 32,
+      "address": "Area 19",
+      "email": "user46@example.com",
+      "emergency_contact": "01722236881",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 47,
+    "fields": {
+      "name": "Labiba",
+      "age": 52,
+      "address": "Area 20",
+      "email": "user47@example.com",
+      "emergency_contact": "01782750906",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 48,
+    "fields": {
+      "name": "Nusrat",
+      "age": 31,
+      "address": "Area 14",
+      "email": "user48@example.com",
+      "emergency_contact": "01726956993",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 49,
+    "fields": {
+      "name": "Rumana",
+      "age": 22,
+      "address": "Area 14",
+      "email": "user49@example.com",
+      "emergency_contact": "01741134395",
+      "priority_level": 3,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.patient",
+    "pk": 50,
+    "fields": {
+      "name": "Tarek",
+      "age": 18,
+      "address": "Area 3",
+      "email": "user50@example.com",
+      "emergency_contact": "01731245324",
+      "priority_level": 2,
+      "hospital_name": null
+    }
+  },
+  {
+    "model": "core.supply_center",
+    "pk": 1,
+    "fields": {
+      "name": "Dhaka Central Depot",
+      "total_stock": 120
+    }
+  },
+  {
+    "model": "core.supply_center",
+    "pk": 2,
+    "fields": {
+      "name": "Gazipur Relief Hub",
+      "total_stock": 100
+    }
+  },
+  {
+    "model": "core.supply_center",
+    "pk": 3,
+    "fields": {
+      "name": "Narayanganj Medical Stock",
+      "total_stock": 80
+    }
+  },
+  {
+    "model": "core.supply_center",
+    "pk": 4,
+    "fields": {
+      "name": "Tangail Distribution Point",
+      "total_stock": 70
+    }
+  },
+  {
+    "model": "core.supply_center",
+    "pk": 5,
+    "fields": {
+      "name": "Manikganj Storage Unit",
+      "total_stock": 90
+    }
+  },
+  {
+    "model": "core.supply_center",
+    "pk": 6,
+    "fields": {
+      "name": "Mymensingh Regional Depot",
+      "total_stock": 110
+    }
+  },
+  {
+    "model": "core.disaster_zone",
+    "pk": 1,
+    "fields": {
+      "name": "Mirpur Flood Zone",
+      "demand": 60
+    }
+  },
+  {
+    "model": "core.disaster_zone",
+    "pk": 2,
+    "fields": {
+      "name": "Gazipur Landslide Zone",
+      "demand": 40
+    }
+  },
+  {
+    "model": "core.disaster_zone",
+    "pk": 3,
+    "fields": {
+      "name": "Narayanganj Industrial Fire",
+      "demand": 55
+    }
+  },
+  {
+    "model": "core.disaster_zone",
+    "pk": 4,
+    "fields": {
+      "name": "Tangail Storm Impact Area",
+      "demand": 45
+    }
+  },
+  {
+    "model": "core.disaster_zone",
+    "pk": 5,
+    "fields": {
+      "name": "Manikganj Bridge Collapse",
+      "demand": 50
+    }
+  },
+  {
+    "model": "core.disaster_zone",
+    "pk": 6,
+    "fields": {
+      "name": "Mymensingh Earthquake Relief",
+      "demand": 70
+    }
+  },
+  {
+    "model": "core.transportflow",
+    "pk": 1,
+    "fields": {
+      "center": 1,
+      "zone": 1,
+      "amount_sent": 25
+    }
+  },
+  {
+    "model": "core.transportflow",
+    "pk": 2,
+    "fields": {
+      "center": 1,
+      "zone": 3,
+      "amount_sent": 20
+    }
+  },
+  {
+    "model": "core.transportflow",
+    "pk": 3,
+    "fields": {
+      "center": 2,
+      "zone": 2,
+      "amount_sent": 30
+    }
+  },
+  {
+    "model": "core.transportflow",
+    "pk": 4,
+    "fields": {
+      "center": 3,
+      "zone": 3,
+      "amount_sent": 15
+    }
+  },
+  {
+    "model": "core.transportflow",
+    "pk": 5,
+    "fields": {
+      "center": 4,
+      "zone": 4,
+      "amount_sent": 10
+    }
+  },
+  {
+    "model": "core.transportflow",
+    "pk": 6,
+    "fields": {
+      "center": 5,
+      "zone": 5,
+      "amount_sent": 20
+    }
+  },
+  {
+    "model": "core.transportflow",
+    "pk": 7,
+    "fields": {
+      "center": 6,
+      "zone": 6,
+      "amount_sent": 40
+    }
+  },
+  {
+    "model": "core.transportflow",
+    "pk": 8,
+    "fields": {
+      "center": 2,
+      "zone": 1,
+      "amount_sent": 10
+    }
+  },
+  {
+    "model": "core.transportflow",
+    "pk": 9,
+    "fields": {
+      "center": 3,
+      "zone": 5,
+      "amount_sent": 5
+    }
+  },
+  {
+    "model": "core.transportflow",
+    "pk": 10,
+    "fields": {
+      "center": 5,
+      "zone": 6,
+      "amount_sent": 10
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 1,
+    "fields": {
+      "name": "Oxygen Cylinders",
+      "quantity": 40,
+      "priority_score": 10
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 2,
+    "fields": {
+      "name": "First Aid Kits",
+      "quantity": 80,
+      "priority_score": 6
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 3,
+    "fields": {
+      "name": "Surgical Masks",
+      "quantity": 200,
+      "priority_score": 4
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 4,
+    "fields": {
+      "name": "Protective Gloves",
+      "quantity": 150,
+      "priority_score": 3
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 5,
+    "fields": {
+      "name": "Painkillers",
+      "quantity": 100,
+      "priority_score": 5
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 6,
+    "fields": {
+      "name": "Antibiotics",
+      "quantity": 60,
+      "priority_score": 8
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 7,
+    "fields": {
+      "name": "IV Fluids",
+      "quantity": 90,
+      "priority_score": 7
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 8,
+    "fields": {
+      "name": "Blankets",
+      "quantity": 150,
+      "priority_score": 3
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 9,
+    "fields": {
+      "name": "Emergency Tents",
+      "quantity": 40,
+      "priority_score": 9
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 10,
+    "fields": {
+      "name": "Bottled Water Packs",
+      "quantity": 180,
+      "priority_score": 4
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 11,
+    "fields": {
+      "name": "Dry Food Packages",
+      "quantity": 220,
+      "priority_score": 5
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 12,
+    "fields": {
+      "name": "Disinfectants",
+      "quantity": 100,
+      "priority_score": 6
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 13,
+    "fields": {
+      "name": "Power Generators",
+      "quantity": 20,
+      "priority_score": 9
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 14,
+    "fields": {
+      "name": "Battery Packs",
+      "quantity": 60,
+      "priority_score": 5
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 15,
+    "fields": {
+      "name": "Blood Bags",
+      "quantity": 35,
+      "priority_score": 10
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 16,
+    "fields": {
+      "name": "Stretchers",
+      "quantity": 15,
+      "priority_score": 8
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 17,
+    "fields": {
+      "name": "Emergency Lights",
+      "quantity": 50,
+      "priority_score": 6
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 18,
+    "fields": {
+      "name": "Medical Gowns",
+      "quantity": 80,
+      "priority_score": 4
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 19,
+    "fields": {
+      "name": "Thermal Scanners",
+      "quantity": 25,
+      "priority_score": 9
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 20,
+    "fields": {
+      "name": "Ventilators",
+      "quantity": 10,
+      "priority_score": 10
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 21,
+    "fields": {
+      "name": "Sanitary Pads",
+      "quantity": 140,
+      "priority_score": 4
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 22,
+    "fields": {
+      "name": "Toiletry Kits",
+      "quantity": 100,
+      "priority_score": 3
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 23,
+    "fields": {
+      "name": "Towels",
+      "quantity": 120,
+      "priority_score": 2
+    }
+  },
+  {
+    "model": "core.resource",
+    "pk": 24,
+    "fields": {
+      "name": "Cooking Stoves",
+      "quantity": 25,
+      "priority_score": 7
+    }
+  }
+]
