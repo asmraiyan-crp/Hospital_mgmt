@@ -60,5 +60,5 @@ class maxflow:
         for u in self.flow:
             for v, f in self.flow[u].items():
                 if f > 0:
-                    assignments.append((u, v))
+                    assignments.append((u, v,f))
         return assignments
