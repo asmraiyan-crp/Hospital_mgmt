@@ -174,11 +174,11 @@ def run_supply_optimization():
     selected, total_value = run_knapsack(mcapacity)
     with transaction.atomic():
         # First, mark all resources as not allocated
-        Resource.objects.update(quantity=F('volume'))
+        Resource.objects.update(volume=F('volume'))
 
         for item in selected:
             # Suppose Resource model has 'quantity_available' field
-            item.quantity= max(0, item.quantity- item.quantity)
+            item.volume= max(0, item.volume- item.volume)
             item.save()
 
     print("Optimization complete!")

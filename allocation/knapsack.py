@@ -35,6 +35,6 @@ def run_knapsack(max_capacity):
     print(f"Total utility value: {total_value}")
     print("\nSelected Resources for Ambulance Kit:")
     for item in selected:
-        print(f" - {item.name} (Qty: {item.quantity}, Score: {item.priority_score})")
+        print(f" - {item.name} (Qty: {item.volume}, Score: {item.priority_score})")
 
     return selected, total_value

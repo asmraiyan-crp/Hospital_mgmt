@@ -1036,7 +1036,7 @@
     "pk": 1,
     "fields": {
       "name": "Oxygen Cylinders",
-      "quantity": 40,
+      "volume": 40,
       "priority_score": 10
     }
   },
@@ -1045,7 +1045,7 @@
     "pk": 2,
     "fields": {
       "name": "First Aid Kits",
-      "quantity": 80,
+      "volume": 80,
       "priority_score": 6
     }
   },
@@ -1054,7 +1054,7 @@
     "pk": 3,
     "fields": {
       "name": "Surgical Masks",
-      "quantity": 200,
+      "volume": 200,
       "priority_score": 4
     }
   },
@@ -1063,7 +1063,7 @@
     "pk": 4,
     "fields": {
       "name": "Protective Gloves",
-      "quantity": 150,
+      "volume": 150,
       "priority_score": 3
     }
   },
@@ -1072,7 +1072,7 @@
     "pk": 5,
     "fields": {
       "name": "Painkillers",
-      "quantity": 100,
+      "volume": 100,
       "priority_score": 5
     }
   },
@@ -1081,7 +1081,7 @@
     "pk": 6,
     "fields": {
       "name": "Antibiotics",
-      "quantity": 60,
+      "volume": 60,
       "priority_score": 8
     }
   },
@@ -1090,7 +1090,7 @@
     "pk": 7,
     "fields": {
       "name": "IV Fluids",
-      "quantity": 90,
+      "volume": 90,
       "priority_score": 7
     }
   },
@@ -1099,7 +1099,7 @@
     "pk": 8,
     "fields": {
       "name": "Blankets",
-      "quantity": 150,
+      "volume": 150,
       "priority_score": 3
     }
   },
@@ -1108,7 +1108,7 @@
     "pk": 9,
     "fields": {
       "name": "Emergency Tents",
-      "quantity": 40,
+      "volume": 40,
       "priority_score": 9
     }
   },
@@ -1117,7 +1117,7 @@
     "pk": 10,
     "fields": {
       "name": "Bottled Water Packs",
-      "quantity": 180,
+      "volume": 180,
       "priority_score": 4
     }
   },
@@ -1126,7 +1126,7 @@
     "pk": 11,
     "fields": {
       "name": "Dry Food Packages",
-      "quantity": 220,
+      "volume": 220,
       "priority_score": 5
     }
   },
@@ -1135,7 +1135,7 @@
     "pk": 12,
     "fields": {
       "name": "Disinfectants",
-      "quantity": 100,
+      "volume": 100,
       "priority_score": 6
     }
   },
@@ -1144,7 +1144,7 @@
     "pk": 13,
     "fields": {
       "name": "Power Generators",
-      "quantity": 20,
+      "volume": 20,
       "priority_score": 9
     }
   },
@@ -1153,7 +1153,7 @@
     "pk": 14,
     "fields": {
       "name": "Battery Packs",
-      "quantity": 60,
+      "volume": 60,
       "priority_score": 5
     }
   },
@@ -1162,7 +1162,7 @@
     "pk": 15,
     "fields": {
       "name": "Blood Bags",
-      "quantity": 35,
+      "volume": 35,
       "priority_score": 10
     }
   },
@@ -1171,7 +1171,7 @@
     "pk": 16,
     "fields": {
       "name": "Stretchers",
-      "quantity": 15,
+      "volume": 15,
       "priority_score": 8
     }
   },
@@ -1180,7 +1180,7 @@
     "pk": 17,
     "fields": {
       "name": "Emergency Lights",
-      "quantity": 50,
+      "volume": 50,
       "priority_score": 6
     }
   },
@@ -1189,7 +1189,7 @@
     "pk": 18,
     "fields": {
       "name": "Medical Gowns",
-      "quantity": 80,
+      "volume": 80,
       "priority_score": 4
     }
   },
@@ -1198,7 +1198,7 @@
     "pk": 19,
     "fields": {
       "name": "Thermal Scanners",
-      "quantity": 25,
+      "volume": 25,
       "priority_score": 9
     }
   },
@@ -1207,7 +1207,7 @@
     "pk": 20,
     "fields": {
       "name": "Ventilators",
-      "quantity": 10,
+      "volume": 10,
       "priority_score": 10
     }
   },
@@ -1216,7 +1216,7 @@
     "pk": 21,
     "fields": {
       "name": "Sanitary Pads",
-      "quantity": 140,
+      "volume": 140,
       "priority_score": 4
     }
   },
@@ -1225,7 +1225,7 @@
     "pk": 22,
     "fields": {
       "name": "Toiletry Kits",
-      "quantity": 100,
+      "volume": 100,
       "priority_score": 3
     }
   },
@@ -1234,7 +1234,7 @@
     "pk": 23,
     "fields": {
       "name": "Towels",
-      "quantity": 120,
+      "volume": 120,
       "priority_score": 2
     }
   },
@@ -1243,7 +1243,7 @@
     "pk": 24,
     "fields": {
       "name": "Cooking Stoves",
-      "quantity": 25,
+      "volume": 25,
       "priority_score": 7
     }
   }
