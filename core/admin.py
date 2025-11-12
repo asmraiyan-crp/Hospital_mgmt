@@ -1,46 +1,7 @@
 from django.contrib import admin , messages
-from .models import Hospital, Patient, Doctor, Resource, HospitalTransfer, Supply_center, Disaster_zone, TransportFlow , supply_max_cap
-from allocation.utils import run_allocation, run_transport_allocation, run_supply_optimization
+from .models import  Resource, TransportFlow, supply_max_cap
+from allocation.utils import run_supply_optimization, calculate_single_pair_flow
 
-
-@admin.register(Hospital)
-class HospitalAdmin(admin.ModelAdmin):
-    list_display = ('name', 'location', 'top_priority_avaiable_beds',
-                    'mid_priority_avaiable_beds', 'low_priority_avaiable_beds', 'total_beds')
-    search_fields = ('name', 'location')
-
-@admin.register(HospitalTransfer)
-class HospitalTransferAdmin(admin.ModelAdmin):
-    list_display = ('from_hospital', 'to_hospital' , 'capacity')
-    search_fields = ('from_hospital__name', 'to_hospital__name')
-
-@admin.register(Patient)
-class PatientAdmin(admin.ModelAdmin):
-    list_display = ('name', 'age', 'address', 'email', 'emergency_contact', 'get_priority_level', 'hospital_name')
-    list_filter = ('priority_level', 'hospital_name')
-    search_fields = ('name', 'email', 'address')
-    actions = ['run_auto_allocation'] 
-
-    def run_auto_allocation(self, request, queryset):
-        run_allocation()  # Call your allocation logic
-        self.message_user(request, "✅ Allocation complete.")
-
-    run_auto_allocation.short_description = "Run Auto-Allocation" 
-
-    def get_priority_level(self, obj):
-        return obj.get_priority_level_display()
-    get_priority_level.short_description = 'Priority Level'
-
-
-@admin.register(Doctor)
-class DoctorAdmin(admin.ModelAdmin):
-    list_display = ('name', 'spaciality', 'avaiable')
-    list_filter = ('avaiable', 'spaciality')
-    search_fields = ('name', 'spaciality')
-
-@admin.register(supply_max_cap)
-class Supply_max_capAdmin(admin.ModelAdmin):
-    list_dispaly =('max_capacity')
 
 @admin.register(Resource)
 class ResourceAdmin(admin.ModelAdmin):
@@ -51,41 +12,49 @@ class ResourceAdmin(admin.ModelAdmin):
 
     def run_optimize(self, request, queryset):
         selected, total_value = run_supply_optimization()
-        
-        # Optionally, display the selected items in the Django admin message
         selected_names = ", ".join([item.name for item in selected])
         self.message_user(
             request,
             f"✅ Optimization complete. Total utility: {total_value}. Selected: {selected_names}"
         )
-
     run_optimize.short_description = "Run Resource Optimization (Knapsack)"
 
-@admin.register(Supply_center)
-class Supply_center_Admin(admin.ModelAdmin):
-    list_display = ('name','total_stock')
-    search_fields = ('name',)
-
-@admin.register(Disaster_zone)
-class Disaster_zone_Admin(admin.ModelAdmin):
-    list_display = ('name','demand')
-    search_fields = ('name',)
 
 @admin.register(TransportFlow)
 class TransportFlowAdmin(admin.ModelAdmin):
-    list_display = ("center", "zone", "amount_sent","send_limits")
-    actions = ["allocate_selected_transport"]
+    # 'amount_sent' is no longer needed here, but you can keep it
+    list_display = ("A", "to", "max_capacity", "amount_sent")
+    search_fields = ("A", "to")
+    actions = ["calculate_max_flow_for_selected"] # Changed this line
 
-    def allocate_selected_transport(modeladmin, request, queryset):
+    def calculate_max_flow_for_selected(self, request, queryset):
         """
-        Admin action to allocate transport for selected TransportFlow objects
+        Admin action to calculate max-flow for a single selected route.
         """
+        # 1. Check that the user selected only ONE route
+        if queryset.count() != 1:
+            messages.error(request, "Please select exactly one route to test.")
+            return
+
+        selected_route = queryset.first()
+        source_node = selected_route.A
+        sink_node = selected_route.to
+
+        # 2. Call your new utility function
         try:
-            # Here you can call your existing logic
-            run_transport_allocation()  # run allocation for all transport
-            messages.success(request, "✅ Transport allocation executed successfully!")
+            total_flow = calculate_single_pair_flow(source_node, sink_node)
+            messages.success(
+                request, 
+                f"✅ Total Max Flow from '{source_node}' to '{sink_node}' is: {total_flow} units"
+            )
         except Exception as e:
-            messages.error(request, f"❌ Error during allocation: {e}")
+            messages.error(request, f"❌ Error during calculation: {e}")
 
+    calculate_max_flow_for_selected.short_description = "Calculate Max Flow (Source → Sink)"
 
+# You will also need to register your other models here (Supply_center, etc.)
+# so you can populate them for your *other* algorithm.
 
+@admin.register(supply_max_cap)
+class SupplyMaxCapAdmin(admin.ModelAdmin):
+    list_display = ('id', 'capacity')
