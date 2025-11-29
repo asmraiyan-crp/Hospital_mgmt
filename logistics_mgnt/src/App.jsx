@@ -545,6 +545,8 @@ function DataManager({ notify, refreshStatus }) {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editItem, setEditItem] = useState(null);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // New State
+  const [newItem, setNewItem] = useState({ A: '', to: '', max_capacity: 0 }); // New Item State
 
   useEffect(() => { fetchData(); }, []);
 
@@ -576,12 +578,45 @@ function DataManager({ notify, refreshStatus }) {
     } catch(e) { notify("Error updating", "error"); }
   };
 
+  // --- NEW: Add Route Logic ---
+  const handleAdd = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`${API_BASE}/flows/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newItem)
+      });
+      if (res.ok) { 
+        notify("New route added successfully!"); 
+        setIsAddModalOpen(false); 
+        setNewItem({ A: '', to: '', max_capacity: 0 }); // Reset form
+        fetchData(); 
+        refreshStatus();
+      } else {
+        notify("Failed to create route", "error");
+      }
+    } catch(e) { notify("Error creating route", "error"); }
+  };
+
   return (
     <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden animate-fade-in">
       <div className="bg-slate-50 p-6 border-b border-slate-200 flex justify-between items-center">
         <h3 className="text-xl font-bold text-slate-800">Transport Network Data</h3>
-        <button onClick={fetchData} className="p-2 hover:bg-slate-200 rounded-full"><RefreshCw size={18}/></button>
+        <div className="flex gap-2">
+          {/* NEW ADD BUTTON */}
+          <button 
+            onClick={() => setIsAddModalOpen(true)} 
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-bold text-sm"
+          >
+            <Plus size={16} /> Add Route
+          </button>
+          <button onClick={fetchData} className="p-2 hover:bg-slate-200 rounded-full text-slate-500">
+            <RefreshCw size={18}/>
+          </button>
+        </div>
       </div>
+
       <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
         <table className="w-full text-left text-sm">
           <thead className="bg-slate-50 text-slate-500 border-b border-slate-200 sticky top-0">
@@ -607,17 +642,75 @@ function DataManager({ notify, refreshStatus }) {
           </tbody>
         </table>
       </div>
+
+      {/* NEW: Add Route Modal */}
+      {isAddModalOpen && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[100]">
+          <div className="bg-white rounded-2xl p-8 w-full max-w-md animate-fade-in-up shadow-2xl">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold text-slate-800">Add New Transport Route</h3>
+              <button onClick={() => setIsAddModalOpen(false)} className="text-slate-400 hover:text-slate-600">
+                <X size={24} />
+              </button>
+            </div>
+            <form onSubmit={handleAdd} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Source District</label>
+                <input 
+                  type="text" 
+                  value={newItem.A} 
+                  onChange={e=>setNewItem({...newItem, A:e.target.value})} 
+                  className="w-full p-3 border border-slate-300 rounded-lg focus:border-emerald-500 focus:outline-none" 
+                  placeholder="e.g. Dhaka"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Destination District</label>
+                <input 
+                  type="text" 
+                  value={newItem.to} 
+                  onChange={e=>setNewItem({...newItem, to:e.target.value})} 
+                  className="w-full p-3 border border-slate-300 rounded-lg focus:border-emerald-500 focus:outline-none" 
+                  placeholder="e.g. Comilla"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Max Capacity</label>
+                <input 
+                  type="number" 
+                  min="1"
+                  value={newItem.max_capacity} 
+                  onChange={e=>setNewItem({...newItem, max_capacity:parseInt(e.target.value)})} 
+                  className="w-full p-3 border border-slate-300 rounded-lg focus:border-emerald-500 focus:outline-none" 
+                  placeholder="e.g. 500"
+                  required
+                />
+              </div>
+              <button type="submit" className="w-full py-3 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 shadow-md transition-all flex justify-center items-center gap-2">
+                <Plus size={18} /> Create Route
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Modal (Existing) */}
       {editItem && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[100]">
           <div className="bg-white rounded-2xl p-8 w-full max-w-md animate-fade-in-up">
-            <h3 className="text-xl font-bold mb-4">Edit Route</h3>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold text-slate-800">Edit Route</h3>
+              <button onClick={() => setEditItem(null)} className="text-slate-400 hover:text-slate-600"><X size={24} /></button>
+            </div>
             <form onSubmit={handleUpdate} className="space-y-4">
-              <input type="text" value={editItem.A} onChange={e=>setEditItem({...editItem, A:e.target.value})} className="w-full p-2 border rounded" placeholder="Source"/>
-              <input type="text" value={editItem.to} onChange={e=>setEditItem({...editItem, to:e.target.value})} className="w-full p-2 border rounded" placeholder="Destination"/>
-              <input type="number" value={editItem.max_capacity} onChange={e=>setEditItem({...editItem, max_capacity:e.target.value})} className="w-full p-2 border rounded" placeholder="Capacity"/>
+              <input type="text" value={editItem.A} onChange={e=>setEditItem({...editItem, A:e.target.value})} className="w-full p-3 border rounded-lg" placeholder="Source"/>
+              <input type="text" value={editItem.to} onChange={e=>setEditItem({...editItem, to:e.target.value})} className="w-full p-3 border rounded-lg" placeholder="Destination"/>
+              <input type="number" value={editItem.max_capacity} onChange={e=>setEditItem({...editItem, max_capacity:e.target.value})} className="w-full p-3 border rounded-lg" placeholder="Capacity"/>
               <div className="flex gap-2">
-                <button type="button" onClick={()=>setEditItem(null)} className="flex-1 py-2 bg-slate-100 rounded">Cancel</button>
-                <button type="submit" className="flex-1 py-2 bg-emerald-600 text-white rounded">Save</button>
+                <button type="button" onClick={()=>setEditItem(null)} className="flex-1 py-3 bg-slate-100 rounded-lg font-bold text-slate-600">Cancel</button>
+                <button type="submit" className="flex-1 py-3 bg-emerald-600 text-white rounded-lg font-bold">Save Changes</button>
               </div>
             </form>
           </div>

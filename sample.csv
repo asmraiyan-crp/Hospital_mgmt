@@ -1,6 +1,7 @@
 Source,Destination,Capacity
 Dhaka,Comilla,500
 Dhaka,Tangail,300
+Dhaka,Chittagong,500
 Comilla,Feni,400
 Comilla,Chittagong,200
 Feni,Chittagong,300
