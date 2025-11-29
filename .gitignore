@@ -1,0 +1,19 @@
+Python & Django
+
+pycache/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+db.sqlite3
+.DS_Store
+
+Node & React
+
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vite/
