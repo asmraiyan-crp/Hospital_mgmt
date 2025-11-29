@@ -1,0 +1,12 @@
+patient model:
+Name,age,address,email,emargency_contact,priority_level,condition,hospital_name
+
+doctor model:
+name,spaciality,avaiablity
+
+hospital model:
+name,location,total_beds,avaiable_total_beds,top_priority_avaiable_beds,mid_priority_avaiable_beds,
+low_priority_avaiable_beds
+
+resources model:
+name, quiantity,priority_level,weight
